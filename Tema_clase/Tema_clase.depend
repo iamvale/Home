@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1555281261 source:e:\cursc_\tema_clase\main.cpp
+	<iostream>
+	"BecReglabil.h"
+
+1555356339 e:\cursc_\tema_clase\include\becreglabil.h
+
+1555356545 source:e:\cursc_\tema_clase\src\becreglabil.cpp
+	"BecReglabil.h"
+	<iostream>
+
