@@ -1,0 +1,65 @@
+# depslib dependency file v1.0
+1558810821 source:c:\users\lenove-notebook\desktop\proiect\main.cpp
+	<iostream>
+	<stdlib.h>
+	"Biblioteca.h"
+
+1559072943 c:\users\lenove-notebook\desktop\proiect\include\biblioteca.h
+	<Articol.h>
+	<vector>
+
+1559403285 source:c:\users\lenove-notebook\desktop\proiect\src\biblioteca.cpp
+	"Biblioteca.h"
+	<iostream>
+	<stdlib.h>
+	<Carte.h>
+	<Audio.h>
+	<Disc.h>
+	<Revista.h>
+	<typeinfo>
+	<vector>
+	<limits>
+
+1558909599 source:c:\users\lenove-notebook\desktop\proiect\src\articol.cpp
+	"Articol.h"
+	<stdlib.h>
+	<string>
+
+1559389473 c:\users\lenove-notebook\desktop\proiect\include\articol.h
+	<stdlib.h>
+	<string>
+	<vector>
+
+1559072771 source:c:\users\lenove-notebook\desktop\proiect\src\audio.cpp
+	"Audio.h"
+	"Articol.h"
+	<string>
+
+1559155425 c:\users\lenove-notebook\desktop\proiect\include\audio.h
+	<stdlib.h>
+	<string>
+	<Articol.h>
+
+1558908699 source:c:\users\lenove-notebook\desktop\proiect\src\disc.cpp
+	"Disc.h"
+	"Articol.h"
+
+1558908758 c:\users\lenove-notebook\desktop\proiect\include\disc.h
+	<Articol.h>
+
+1558908726 source:c:\users\lenove-notebook\desktop\proiect\src\revista.cpp
+	"Revista.h"
+	"Articol.h"
+
+1558908756 c:\users\lenove-notebook\desktop\proiect\include\revista.h
+	<Articol.h>
+
+1559072790 c:\users\lenove-notebook\desktop\proiect\include\carte.h
+	<string>
+	<Articol.h>
+
+1559072790 source:c:\users\lenove-notebook\desktop\proiect\src\carte.cpp
+	"Carte.h"
+	"Articol.h"
+	<string>
+
