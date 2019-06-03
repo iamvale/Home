@@ -11,7 +11,7 @@ class Carte : public Articol
         //std::string titlu;
         //int bucati;
         Carte();
-        Carte(std::string, int, std::string);
+        Carte(std::string, int, int, std::string);
         virtual ~Carte();
         void setEditura(std::string);
 

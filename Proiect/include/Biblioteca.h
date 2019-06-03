@@ -12,11 +12,10 @@ class Biblioteca
         int meniu_principal();
         int meniu_adaugare();
         void meniu_returnare();
-        int Adauga_articol();
-        int Returneaza_articol();
-        int Inchiriaza_articol();
-        int Listare_articol();
-        void Iesire();
+        void meniu_inchiriere();
+        void meniu_listare();
+        void Salvare();
+
 
     protected:
 

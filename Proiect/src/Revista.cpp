@@ -1,12 +1,15 @@
 #include "Revista.h"
 #include "Articol.h"
 
-Revista::Revista(std::string tit, int buc, std::string tip):Articol(tit, buc)
+Revista::Revista(std::string tit, int bucEx, int bucDisp, std::string tip):Articol(tit, bucEx, bucDisp)
 {
-    //ctor
+    tipRev = tip;
 }
 
 Revista::~Revista()
 {
     //dtor
+}
+void Revista::setTip(std::string tp) {
+    tipRev = tp;
 }

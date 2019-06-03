@@ -7,7 +7,7 @@ Carte::Carte()
 
 }
 
-Carte::Carte(std::string tit, int buc, std::string edit):Articol(tit, buc)
+Carte::Carte(std::string tit, int bucEx, int bucDisp, std::string edit):Articol(tit, bucEx, bucDisp)
 {
     editura = edit;
 

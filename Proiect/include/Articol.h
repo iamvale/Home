@@ -11,22 +11,28 @@ class Articol
 {
     public:
         Articol();
-        Articol(std::string, int);
+        Articol(std::string, int, int);
         virtual ~Articol();
 //        std::string titlu;
 //        int bucati;
 
-        virtual std::string getTitlu();
-        virtual void setTitlu(std::string);
-        virtual int getBucati();
-        virtual void setBucati(int);
-        virtual std::string getAll();
+         std::string getTitlu();
+         void setTitlu(std::string);
+         int getBucExist();
+         void setBucExist(int);
+         int getBucDisp();
+         void setBucDisp(int);
+         virtual std::string getAll();
+         virtual bool operator>(Articol& sortAlfa);
+
 
     protected:
 
     private:
         std::string titlu;
-        int bucati;
+        int bucExist;
+        int bucDisponibile;
+
 
 
 

@@ -2,7 +2,7 @@
 #include "Articol.h"
 #include<string>
 
-Audio::Audio(std::string tit, int buc, double dur):Articol(tit, buc)
+Audio::Audio(std::string tit, int bucEx, int bucDisp, double dur):Articol(tit, bucEx, bucDisp)
 {
     durata = dur;
 }

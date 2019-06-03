@@ -7,13 +7,14 @@
 class Revista : public Articol
 {
     public:
-        Revista(std::string, int, std::string);
+        Revista(std::string, int, int, std::string);
         virtual ~Revista();
+       void setTip(std::string);
 
     protected:
 
     private:
-        std::string tip;
+        std::string tipRev;
 };
 
 #endif // REVISTA_H

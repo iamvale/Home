@@ -9,7 +9,7 @@
 class Audio : public Articol
 {
     public:
-        Audio(std::string, int, double);
+        Audio(std::string, int, int, double);
         virtual ~Audio();
         void setDurata(double);
 

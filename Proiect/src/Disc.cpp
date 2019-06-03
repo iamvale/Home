@@ -1,12 +1,15 @@
 #include "Disc.h"
 #include "Articol.h"
 
-Disc::Disc(std::string tit, int buc, std::string program):Articol(tit, buc)
+Disc::Disc(std::string tit, int bucEx, int bucDisp, std::string prog):Articol(tit, bucEx, bucDisp)
 {
-    //ctor
+    program = prog;
 }
 
 Disc::~Disc()
 {
     //dtor
+}
+void Disc::setProg(std::string pr) {
+    program = pr;
 }

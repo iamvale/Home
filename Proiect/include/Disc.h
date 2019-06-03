@@ -8,8 +8,9 @@ class Disc : public Articol
 {
     public:
         Disc();
-        Disc(std::string, int, std::string);
+        Disc(std::string, int, int, std::string);
         virtual ~Disc();
+        void setProg(std::string);
 
     protected:
 
