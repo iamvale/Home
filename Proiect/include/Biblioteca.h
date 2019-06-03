@@ -21,7 +21,7 @@ class Biblioteca
 
     private:
 
-        std::vector<Articol>lista;
+        std::vector<Articol*>lista;
 };
 
 #endif // BIBLIOTECA_H

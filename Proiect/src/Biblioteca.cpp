@@ -171,13 +171,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mCarte ->getTitlu())
+                   if(index->getTitlu() == mCarte ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mCarte ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mCarte ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mCarte ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mCarte ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -185,7 +185,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mCarte);
+               lista.push_back(mCarte);
                bucEx = mCarte ->getBucExist();
                bucDisp = mCarte ->getBucDisp();
 
@@ -247,13 +247,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mAudio ->getTitlu())
+                   if(index->getTitlu() == mAudio ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mAudio ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mAudio ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mAudio ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mAudio ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -261,7 +261,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mAudio);
+               lista.push_back(mAudio);
                bucEx = mAudio ->getBucExist();
                bucDisp = mAudio ->getBucDisp();
 
@@ -320,13 +320,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mDisc ->getTitlu())
+                   if(index->getTitlu() == mDisc ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mDisc ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mDisc ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mDisc ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mDisc ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -334,7 +334,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mDisc);
+               lista.push_back(mDisc);
                bucEx = mDisc ->getBucExist();
                bucDisp = mDisc ->getBucDisp();
 
@@ -394,13 +394,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mRevista ->getTitlu())
+                   if(index->getTitlu() == mRevista ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mRevista ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mRevista ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mRevista ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mRevista ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -408,7 +408,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mRevista);
+               lista.push_back(mRevista);
                bucEx = mRevista ->getBucExist();
                bucDisp = mRevista ->getBucDisp();
 
@@ -486,13 +486,13 @@ void Biblioteca::meniu_returnare()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
 
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
 
             }
 
@@ -507,14 +507,14 @@ void Biblioteca::meniu_returnare()
 
             //bool cond = false;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()+ 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
@@ -539,12 +539,12 @@ void Biblioteca::meniu_returnare()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
-                if(index.getAll() == "carte"){
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                if(index->getAll() == "carte"){
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
                 }
             }
 
@@ -559,14 +559,14 @@ void Biblioteca::meniu_returnare()
 
             //bool cond = false;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()+ 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
@@ -647,12 +647,15 @@ void Biblioteca::meniu_inchiriere()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disonibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
-                if(bucDisp > 0)
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " << index.getBucExist() << "  "
-                     <<  "      " << index.getBucDisp() << "\n";
+                if(typeid(*index) == typeid(Carte))
+                {
+                    if(bucDisp > 0)
+                        cout <<  "   " << index->getTitlu() << "       "
+                             <<  "      " << index->getBucExist() << "  "
+                             <<  "      " << index->getBucDisp() << "\n";
+                }
             }
 
 
@@ -669,19 +672,20 @@ void Biblioteca::meniu_inchiriere()
             //bool cond = false;
 
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()- 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()- 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
 
                 }
+
             }
 
                     cout << " Articolul nu se afla in lista " << endl; ///?
@@ -745,11 +749,11 @@ void Biblioteca::meniu_inchiriere()
             cout << endl;
 
 
-         for(auto& index:lista)
+         for(auto index:lista)
             {
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
 
             }
 
