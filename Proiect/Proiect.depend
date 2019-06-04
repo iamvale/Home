@@ -66,3 +66,71 @@
 	"Articol.h"
 	<string>
 
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\main.cpp
+	<iostream>
+	<stdlib.h>
+	"Biblioteca.h"
+
+1559605792 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\biblioteca.h
+	<Articol.h>
+	<vector>
+
+1559640784 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\articol.h
+	<stdlib.h>
+	<string>
+	<vector>
+
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\articol.cpp
+	"Articol.h"
+	<stdlib.h>
+	<string>
+
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\audio.cpp
+	"Audio.h"
+	"Articol.h"
+	<string>
+
+1559596333 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\audio.h
+	<stdlib.h>
+	<string>
+	<Articol.h>
+
+1559606537 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\biblioteca.cpp
+	"Biblioteca.h"
+	<iostream>
+	<stdlib.h>
+	<Carte.h>
+	<Audio.h>
+	<Disc.h>
+	<Revista.h>
+	<typeinfo>
+	<vector>
+	<limits>
+	<algorithm>
+	<fstream>
+	<typeinfo>
+	<string>
+
+1559596333 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\carte.h
+	<string>
+	<Articol.h>
+
+1559596333 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\disc.h
+	<Articol.h>
+
+1559596333 c:\users\lenove-notebook\desktop\home-master\home-master\proiect\include\revista.h
+	<Articol.h>
+
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\carte.cpp
+	"Carte.h"
+	"Articol.h"
+	<string>
+
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\disc.cpp
+	"Disc.h"
+	"Articol.h"
+
+1559596333 source:c:\users\lenove-notebook\desktop\home-master\home-master\proiect\src\revista.cpp
+	"Revista.h"
+	"Articol.h"
+

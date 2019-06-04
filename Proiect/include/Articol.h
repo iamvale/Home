@@ -13,17 +13,14 @@ class Articol
         Articol();
         Articol(std::string, int, int);
         virtual ~Articol();
-//        std::string titlu;
-//        int bucati;
-
-         std::string getTitlu();
-         void setTitlu(std::string);
-         int getBucExist();
-         void setBucExist(int);
-         int getBucDisp();
-         void setBucDisp(int);
-         virtual std::string getAll();
-         virtual bool operator>(Articol& sortAlfa);
+        std::string getTitlu();
+        void setTitlu(std::string);
+        int getBucExist();
+        void setBucExist(int);
+        int getBucDisp();
+        void setBucDisp(int);
+        virtual std::string getAll();
+//        virtual bool operator>(Articol& sortAlfa);
 
 
     protected:

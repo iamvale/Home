@@ -11,6 +11,7 @@
 #include <algorithm>
 #include <fstream>
 #include <typeinfo>
+#include <string>
 
 
 using namespace std;
@@ -32,6 +33,7 @@ Biblioteca::~Biblioteca()
 {
     //dtor
 }
+
 
 int Biblioteca::meniu_principal()
 {
@@ -70,6 +72,7 @@ int Biblioteca::meniu_principal()
             break;
         case 0:
             Salvare();
+            Citire();
             return 0;
            break;
 
@@ -82,6 +85,8 @@ int Biblioteca::meniu_principal()
     }while (repet);
 
 }
+
+
 
 
 int Biblioteca::meniu_adaugare()
@@ -171,13 +176,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mCarte ->getTitlu())
+                   if(index->getTitlu() == mCarte ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mCarte ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mCarte ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mCarte ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mCarte ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -185,7 +190,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mCarte);
+               lista.push_back(mCarte);
                bucEx = mCarte ->getBucExist();
                bucDisp = mCarte ->getBucDisp();
 
@@ -247,13 +252,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mAudio ->getTitlu())
+                   if(index->getTitlu() == mAudio ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mAudio ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mAudio ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mAudio ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mAudio ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -261,7 +266,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mAudio);
+               lista.push_back(mAudio);
                bucEx = mAudio ->getBucExist();
                bucDisp = mAudio ->getBucDisp();
 
@@ -320,13 +325,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mDisc ->getTitlu())
+                   if(index->getTitlu() == mDisc ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mDisc ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mDisc ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mDisc ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mDisc ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -334,7 +339,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mDisc);
+               lista.push_back(mDisc);
                bucEx = mDisc ->getBucExist();
                bucDisp = mDisc ->getBucDisp();
 
@@ -394,13 +399,13 @@ int Biblioteca::meniu_adaugare()
                 for(auto& index:lista)
                 {
 
-                   if(index.getTitlu() == mRevista ->getTitlu())
+                   if(index->getTitlu() == mRevista ->getTitlu())
                    {
-                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index.getTitlu();
-                        bucEx = index.getBucExist() + mRevista ->getBucExist();
-                        index.setBucExist(bucEx);
-                        bucDisp = index.getBucDisp() + mRevista ->getBucDisp();
-                        index.setBucDisp(bucDisp);
+                        cout<<">>>>>> EXISTA DEJA ARTICOLUL <<<<<< " << index->getTitlu();
+                        bucEx = index->getBucExist() + mRevista ->getBucExist();
+                        index->setBucExist(bucEx);
+                        bucDisp = index->getBucDisp() + mRevista ->getBucDisp();
+                        index->setBucDisp(bucDisp);
                        este = true;
                     }
                    break;
@@ -408,7 +413,7 @@ int Biblioteca::meniu_adaugare()
 
 
             if(!este){
-               lista.push_back(*mRevista);
+               lista.push_back(mRevista);
                bucEx = mRevista ->getBucExist();
                bucDisp = mRevista ->getBucDisp();
 
@@ -441,6 +446,9 @@ int Biblioteca::meniu_adaugare()
 
     }while (alta == 'd');
 }
+
+
+
 
 
 
@@ -486,13 +494,16 @@ void Biblioteca::meniu_returnare()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
+                if(typeid(*index) == typeid(Carte))
+                {
 
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << " \n";
 
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                }
 
             }
 
@@ -507,14 +518,14 @@ void Biblioteca::meniu_returnare()
 
             //bool cond = false;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()+ 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
@@ -539,12 +550,13 @@ void Biblioteca::meniu_returnare()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
-                if(index.getAll() == "carte"){
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                if(typeid(*index) == typeid(Audio))
+                {
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
                 }
             }
 
@@ -559,14 +571,14 @@ void Biblioteca::meniu_returnare()
 
             //bool cond = false;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()+ 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
@@ -582,11 +594,107 @@ void Biblioteca::meniu_returnare()
 
             break;
         case 3:
+        {
+            system("cls");
+            cout << endl;
+            cout << "Lista articolelor  inchiriate: \n";
+            cout << endl;
+            cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
+            cout << endl;
 
+            for(auto index:lista)
+            {
+                if(typeid(*index) == typeid(Disc))
+                {
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
+                }
+            }
+
+
+            bool cond = true;
+            while(cond)
+            {
+
+            cout << endl;
+            cout << " Titlul articolului restituit este: "; // mai trebuie validat
+            cin >> retur;
+
+            //bool cond = false;
+
+            for(auto index:lista)
+            {
+
+                if(retur == index->getTitlu())
+                {
+
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
+                    meniu_principal();
+                    cond = false;
+                    break;
+
+                }
+            }
+
+                    cout << " Articolul nu se afla in lista " << endl;
+
+            }
+
+        }
 
             break;
         case 4:
+                    {
+            system("cls");
+            cout << endl;
+            cout << "Lista articolelor  inchiriate: \n";
+            cout << endl;
+            cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disponibile  " << '\n';
+            cout << endl;
 
+            for(auto index:lista)
+            {
+                if(typeid(*index) == typeid(Revista))
+                {
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
+                }
+            }
+
+
+            bool cond = true;
+            while(cond)
+            {
+
+            cout << endl;
+            cout << " Titlul articolului restituit este: "; // mai trebuie validat
+            cin >> retur;
+
+            //bool cond = false;
+
+            for(auto index:lista)
+            {
+
+                if(retur == index->getTitlu())
+                {
+
+                    bucDisp = index->getBucDisp()+ 1;
+                    index->setBucDisp(bucDisp);
+                    meniu_principal();
+                    cond = false;
+                    break;
+
+                }
+            }
+
+                    cout << " Articolul nu se afla in lista " << endl;
+
+            }
+
+        }
 
             break;
 
@@ -603,6 +711,10 @@ void Biblioteca::meniu_returnare()
 
     }while (alta == 'd');
 }
+
+
+
+
 
 void Biblioteca::meniu_inchiriere()
     {
@@ -647,12 +759,15 @@ void Biblioteca::meniu_inchiriere()
             cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disonibile  " << '\n';
             cout << endl;
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
-                if(bucDisp > 0)
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " << index.getBucExist() << "  "
-                     <<  "      " << index.getBucDisp() << "\n";
+                if(typeid(*index) == typeid(Carte))
+                {
+                    if(bucDisp > 0)
+                        cout <<  "   " << index->getTitlu() << "       "
+                             <<  "      " << index->getBucExist() << "  "
+                             <<  "      " << index->getBucDisp() << "\n";
+                }
             }
 
 
@@ -669,23 +784,22 @@ void Biblioteca::meniu_inchiriere()
             //bool cond = false;
 
 
-            for(auto& index:lista)
+            for(auto index:lista)
             {
 
-                if(retur == index.getTitlu())
+                if(retur == index->getTitlu())
                 {
 
-                    bucDisp = index.getBucDisp()- 1;
-                    index.setBucDisp(bucDisp);
+                    bucDisp = index->getBucDisp()- 1;
+                    index->setBucDisp(bucDisp);
                     meniu_principal();
                     cond = false;
                     break;
 
                 }
+
             }
-
                     cout << " Articolul nu se afla in lista " << endl; ///?
-
 
             }
 
@@ -694,12 +808,174 @@ void Biblioteca::meniu_inchiriere()
 
             break;
         case 2:
+        {
+
+            system("cls");
+            cout << endl;
+            cout << "Lista articolelor de inchiriat: \n";
+            cout << endl;
+            cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disonibile  " << '\n';
+            cout << endl;
+
+            for(auto index:lista)
+            {
+                if(typeid(*index) == typeid(Audio))
+                {
+                    if(bucDisp > 0)
+                        cout <<  "   " << index->getTitlu() << "       "
+                             <<  "      " << index->getBucExist() << "  "
+                             <<  "      " << index->getBucDisp() << "\n";
+                }
+            }
+
+
+
+            bool cond = true;
+
+            while(cond)
+            {
+
+            cout << endl;
+            cout << " Doriti sa inchiriati articolul: "; // mai trebuie validat
+            cin >> retur;
+
+            //bool cond = false;
+
+
+            for(auto index:lista)
+            {
+
+                if(retur == index->getTitlu())
+                {
+
+                    bucDisp = index->getBucDisp()- 1;
+                    index->setBucDisp(bucDisp);
+                    meniu_principal();
+                    cond = false;
+                    break;
+
+                }
+
+            }
+                    cout << " Articolul nu se afla in lista " << endl; ///?
+
+            }
+
+        }
 
             break;
         case 3:
+        {
+
+            system("cls");
+            cout << endl;
+            cout << "Lista articolelor de inchiriat: \n";
+            cout << endl;
+            cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disonibile  " << '\n';
+            cout << endl;
+
+            for(auto index:lista)
+            {
+                if(typeid(*index) == typeid(Disc))
+                {
+                    if(bucDisp > 0)
+                        cout <<  "   " << index->getTitlu() << "       "
+                             <<  "      " << index->getBucExist() << "  "
+                             <<  "      " << index->getBucDisp() << "\n";
+                }
+            }
+
+
+
+            bool cond = true;
+
+            while(cond)
+            {
+
+            cout << endl;
+            cout << " Doriti sa inchiriati articolul: "; // mai trebuie validat
+            cin >> retur;
+
+            //bool cond = false;
+
+
+            for(auto index:lista)
+            {
+
+                if(retur == index->getTitlu())
+                {
+
+                    bucDisp = index->getBucDisp()- 1;
+                    index->setBucDisp(bucDisp);
+                    meniu_principal();
+                    cond = false;
+                    break;
+
+                }
+
+            }
+                    cout << " Articolul nu se afla in lista " << endl; ///?
+
+            }
+
+        }
 
             break;
         case 4:
+        {
+
+            system("cls");
+            cout << endl;
+            cout << "Lista articolelor de inchiriat: \n";
+            cout << endl;
+            cout << "  Titlu  " << "  Bucati existente  " << "  Bucati disonibile  " << '\n';
+            cout << endl;
+
+            for(auto index:lista)
+            {
+                if(typeid(*index) == typeid(Revista))
+                {
+                    if(bucDisp > 0)
+                        cout <<  "   " << index->getTitlu() << "       "
+                             <<  "      " << index->getBucExist() << "  "
+                             <<  "      " << index->getBucDisp() << "\n";
+                }
+            }
+
+
+
+            bool cond = true;
+
+            while(cond)
+            {
+
+            cout << endl;
+            cout << " Doriti sa inchiriati articolul: "; // mai trebuie validat
+            cin >> retur;
+
+            //bool cond = false;
+
+
+            for(auto index:lista)
+            {
+
+                if(retur == index->getTitlu())
+                {
+
+                    bucDisp = index->getBucDisp()- 1;
+                    index->setBucDisp(bucDisp);
+                    meniu_principal();
+                    cond = false;
+                    break;
+
+                }
+
+            }
+                    cout << " Articolul nu se afla in lista " << endl; ///?
+
+            }
+
+        }
 
             break;
 
@@ -719,25 +995,20 @@ void Biblioteca::meniu_inchiriere()
     }
 
 
+
+
     void Biblioteca::meniu_listare()
     {
-    string ti;
-    string ed;
-    double dur;
-    string prog;
-    string tp;
-    int bucEx;
-    int bucDisp;
 
-//        Carte* mCarte = new Carte(ti, bucEx, bucDisp, ed);
-//        Audio* mAudio= new Audio(ti, bucEx, bucDisp, dur);
-//        Disc* mDisc = new Disc(ti, bucEx, bucDisp, prog);
-//        Revista* mRevista = new Revista(ti, bucEx, bucDisp, tp);
-//        mCarte.getTitlu()<mAudio.getTitlu();
+        system("cls");
+
+//folosesc o functie lambda pentru comparatorul pe care sa il foloseasca sort
+            sort( lista.begin( ), lista.end( ), [ ]( Articol* leftArt, Articol* rightArt)
+            {
+                return leftArt->getTitlu() < rightArt->getTitlu();
+            });
 
 
-
-            system("cls");
             cout << endl;
             std::cout << "Lista articolelor din biblioteca: \n";
             cout << endl;
@@ -745,35 +1016,48 @@ void Biblioteca::meniu_inchiriere()
             cout << endl;
 
 
-         for(auto& index:lista)
+         for(auto index:lista)
             {
-                cout <<  "   " << index.getTitlu() << "       "
-                     <<  "      " <<index.getBucExist() << " "
-                     <<  "      " <<index.getBucDisp() << "\n";
+                cout <<  "   " << index->getTitlu() << "       "
+                     <<  "      " <<index->getBucExist() << " "
+                     <<  "      " <<index->getBucDisp() << "\n";
 
             }
-
-
-
-
 
 
   }
 
     void Biblioteca::Salvare()
     {
-//        ofstream streamSalvare("Biblioteca.txt");
+        ofstream streamSalvare("Biblioteca.txt");
+
+        for (auto& index:lista)
+        {
+              streamSalvare << index->getTitlu() << "  "
+                            << index->getBucExist() << "   "
+                            << index->getBucDisp() << endl;
+        }
+
+
+    }
+
+    void Biblioteca::Citire()
+    {
+//    string ti;
+//    string ed;
+//    int bucEx;
+//    int bucDisp;
+//        Articol* mArticol = new Articol(ti, bucEx, bucDisp);
+//        ifstream streamCitire("Biblioteca.txt");
 //
-//        for (auto& index:lista)
+//        if(streamCitire.is_open())
 //        {
-//              streamSalvare << index.getTitlu() << "  "
-//                            << index.getBucExist() << "   "
-//                            << index.getBucDisp() << endl;
+//            while(streamCitire >> ti >> bucEx >> bucDisp)
+//            {
+//                std::cout << ti << bucEx << bucDisp;
+//            }
+//            streamCitire.close();
 //        }
-
-
-
-
 
 
     }

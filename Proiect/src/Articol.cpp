@@ -42,10 +42,10 @@ void Articol::setBucDisp(int bucDisp) {
    bucDisponibile = bucDisp;
 }
 
-bool Articol::operator>(Articol& sortAlfa)
-{
-    return getTitlu() > sortAlfa.getTitlu();
-}
+//bool Articol::operator>(Articol& sortAlfa)
+//{
+//    return getTitlu() > sortAlfa.getTitlu();
+//}
 std::string Articol::getAll()
 {
     return titlu;
