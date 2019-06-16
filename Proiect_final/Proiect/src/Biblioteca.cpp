@@ -15,14 +15,9 @@
 
 
 using namespace std;
-//Articol *articole[20];
 
 
 char run_again;
-
-//std::istream& getline( std::istream& ins, int& n )
-//{
-//}
 
 Biblioteca::Biblioteca()
 {
@@ -31,7 +26,14 @@ Biblioteca::Biblioteca()
 
 Biblioteca::~Biblioteca()
 {
-    //dtor
+    for (auto& index:lista)
+    {
+//        delete mCarte;
+//        delete mAudio;
+//        delete mDisc;
+//        delete mRevista;
+    }
+
 }
 
 
@@ -199,9 +201,8 @@ int Biblioteca::meniu_adaugare()
 
             cout<<endl;
 
-        }
 
-
+    }
             break;
 
         case 2:
@@ -421,7 +422,6 @@ int Biblioteca::meniu_adaugare()
 
 
             cout<<endl;
-
         }
 
             break;
@@ -458,6 +458,7 @@ void Biblioteca::meniu_returnare()
         char alta;
         string retur;
         int bucDisp;
+        int bucExist;
 
         do
         {
@@ -523,9 +524,14 @@ void Biblioteca::meniu_returnare()
 
                 if(retur == index->getTitlu())
                 {
+                    bucExist = index->getBucExist();
+                    bucDisp = index->getBucDisp();
 
-                    bucDisp = index->getBucDisp()+ 1;
-                    index->setBucDisp(bucDisp);
+                    if(bucDisp < bucExist)
+                        {
+                            bucDisp = index->getBucDisp()+ 1;
+                            index->setBucDisp(bucDisp);
+                        }
                     meniu_principal();
                     cond = false;
                     break;
@@ -576,9 +582,14 @@ void Biblioteca::meniu_returnare()
 
                 if(retur == index->getTitlu())
                 {
+                    bucExist = index->getBucExist();
+                    bucDisp = index->getBucDisp();
 
-                    bucDisp = index->getBucDisp()+ 1;
-                    index->setBucDisp(bucDisp);
+                    if(bucDisp < bucExist)
+                        {
+                            bucDisp = index->getBucDisp()+ 1;
+                            index->setBucDisp(bucDisp);
+                        }
                     meniu_principal();
                     cond = false;
                     break;
@@ -628,9 +639,14 @@ void Biblioteca::meniu_returnare()
 
                 if(retur == index->getTitlu())
                 {
+                    bucExist = index->getBucExist();
+                    bucDisp = index->getBucDisp();
 
-                    bucDisp = index->getBucDisp()+ 1;
-                    index->setBucDisp(bucDisp);
+                    if(bucDisp < bucExist)
+                        {
+                            bucDisp = index->getBucDisp()+ 1;
+                            index->setBucDisp(bucDisp);
+                        }
                     meniu_principal();
                     cond = false;
                     break;
@@ -680,11 +696,16 @@ void Biblioteca::meniu_returnare()
 
                 if(retur == index->getTitlu())
                 {
+                    bucExist = index->getBucExist();
+                    bucDisp = index->getBucDisp();
 
-                    bucDisp = index->getBucDisp()+ 1;
-                    index->setBucDisp(bucDisp);
-                    meniu_principal();
-                    cond = false;
+                    if(bucDisp < bucExist)
+                        {
+                            bucDisp = index->getBucDisp()+ 1;
+                            index->setBucDisp(bucDisp);
+                        }
+                        meniu_principal();
+                        cond = false;
                     break;
 
                 }
@@ -1002,7 +1023,7 @@ void Biblioteca::meniu_inchiriere()
 
         system("cls");
 
-//folosesc o functie lambda pentru comparatorul pe care sa il foloseasca sort
+
             sort( lista.begin( ), lista.end( ), [ ]( Articol* leftArt, Articol* rightArt)
             {
                 return leftArt->getTitlu() < rightArt->getTitlu();
